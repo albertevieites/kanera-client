@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function TodayCard({ data, column }) {
+function TodayCard() {
 	// Hooks
 	const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ function TodayCard({ data, column }) {
 	const year = current.getFullYear();
 
 	// Sum
-	const sum = allExpenses.reduce((prev, curr, index, array) => prev + curr.amount, 0)
+	const sum = allExpenses.reduce((prev, curr) => prev + curr.amount, 0)
 
 	return (
 		<div className='today'>
@@ -62,6 +62,7 @@ function TodayCard({ data, column }) {
 							<div className='today__concept'>
 								<p>{eachExpense.name}</p>
 								<p>{eachExpense.method}</p>
+								<p>{eachExpense.test}</p>
 							</div>
 							<div className='today__amount'>
 								<p>- £{eachExpense.amount}</p>
