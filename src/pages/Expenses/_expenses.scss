@@ -1,0 +1,27 @@
+.expenses {
+  width: 100%;
+  background-color: lightpink;
+  h1 {
+    padding: 1em;
+  }
+
+  &__list {
+    margin: 2em;
+    border: 2px solid darkblue;
+  }
+
+  &__content {
+    display: flex;
+    gap: 2em;
+    div {
+      width: 100%;
+    }
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+
+    font-weight: 600;
+  }
+}

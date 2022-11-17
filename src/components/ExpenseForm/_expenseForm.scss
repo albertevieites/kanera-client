@@ -1,0 +1,19 @@
+.expense--form {
+  margin: 2em;
+  border: 2px solid darkblue;
+
+  input {
+    border: 1px solid green;
+  }
+  button {
+    margin: 2em;
+    padding: .7em;
+    background-color: aliceblue;
+
+    border: 1px solid black;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
