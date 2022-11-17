@@ -2,8 +2,8 @@ import React from 'react';
 
 const Income = () => {
   return (
-    <div>
-      Income
+    <div className='income'>
+      <h1>Income</h1>
     </div>
   );
 }

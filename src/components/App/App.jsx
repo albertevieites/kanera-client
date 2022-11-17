@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Navbar from "./Navbar";
+import Navbar from "../Navbar/Navbar";
 
-import Home from "../pages/Home";
-import Income from "../pages/Income";
-import Expenses from "../pages/Expenses";
-import Budget from "../pages/Budget";
-import Profile from "../pages/Profile";
+import Home from "../../pages/Home/Home";
+import Income from "../../pages/Income/Income";
+import Expenses from "../../pages/Expenses/Expenses";
+import Budget from "../../pages/Budget/Budget";
+import Profile from "../../pages/Profile/Profile";
 
-import Error from "../pages/Error";
-import NotFound from "../pages/NotFound";
+import Error from "../../pages/Error/Error";
+import NotFound from "../../pages/NotFound/NotFound";
 
 function App() {
   const [count, setCount] = useState(0);
