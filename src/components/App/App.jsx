@@ -8,7 +8,6 @@ import Income from "../../pages/Income/Income";
 import Expenses from "../../pages/Expenses/Expenses";
 import Budget from "../../pages/Budget/Budget";
 import Profile from "../../pages/Profile/Profile";
-
 import Error from "../../pages/Error/Error";
 import NotFound from "../../pages/NotFound/NotFound";
 
