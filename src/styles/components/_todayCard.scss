@@ -1,0 +1,37 @@
+.today {
+  display: flex;
+  flex-direction: column;
+
+  width: 30vw;
+  margin-top: 2em;
+  margin-left: 2em;
+  padding: .7em;
+
+  border: 2px solid darkblue;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+  }
+
+  &__expenses {
+    padding: 2em 0;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__spent {
+    h4 {
+      text-align: center;
+    }
+  }
+}
