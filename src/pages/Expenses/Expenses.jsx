@@ -1,32 +1,31 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ExpenseForm from '../../components/ExpenseForm/ExpenseForm';
 
+// Import Services
+import { getExpensesService } from '../../services/expenses.services';
+
+// Espenses List function
 const Expenses = () => {
+	const navigate = useNavigate();
 	const [allExpenses, setAllExpenses] = useState([]);
 	const [isFetching, setIsFetching] = useState(true);
-
-	const navigate = useNavigate();
-	const api = 'http://localhost:5005/api/expenses';
 
 	useEffect(() => {
 		getExpenses();
 	}, []);
 
-	const getExpenses = () => {
-		axios
-			.get(api)
-			.then(res => {
-				console.log(res.data);
-				setAllExpenses(res.data);
+	const getExpenses = async () => {
+			try {
+
+				const response = await getExpensesService();
+				console.log(response.data)
+				setAllExpenses(response.data)
 				setIsFetching(false);
-			})
-			.catch(err => {
-				console.error(err);
+			} catch (err) {
 				navigate('/error');
-			});
+			}
 	};
 
 	if (isFetching === true) {
@@ -44,7 +43,7 @@ const Expenses = () => {
 
 				<div className='expenses__head'>
 					<span>Date</span>
-					<span>Name</span>
+					<span>Description</span>
 					<span>Category</span>
 					<span>Payment Method</span>
 					<span>Amount</span>
@@ -54,7 +53,7 @@ const Expenses = () => {
 					return (
 						<div className='expenses__content' key={eachExpense._id}>
 							<div>{eachExpense.date}</div>
-							<div>{eachExpense.name}</div>
+							<div>{eachExpense.description}</div>
 							<div>{eachExpense.category}</div>
 							<div>{eachExpense.method}</div>
 							<div>- £{eachExpense.amount}</div>
