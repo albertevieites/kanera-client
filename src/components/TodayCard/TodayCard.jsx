@@ -60,7 +60,7 @@ function TodayCard() {
 					return (
 						<div className='today__details' key={eachExpense._id}>
 							<div className='today__concept'>
-								<p>{eachExpense.name}</p>
+								<p>{eachExpense.description}</p>
 								<p>{eachExpense.method}</p>
 								<p>{eachExpense.test}</p>
 							</div>

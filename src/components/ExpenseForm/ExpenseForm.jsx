@@ -1,85 +1,107 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ExpenseForm = props => {
-	// variables
+// Services
+import { addExpensesService } from '../../services/expenses.services';
+
+const ExpenseForm = (props) => {
+	// useNavigate for handling redirection
 	const navigate = useNavigate();
+
+	// variables
+	const todayDate = new Date().toISOString().slice(0, 10);
 	const num = 0;
-	// Format date variable
-	const todayDate = new Date().toISOString().slice(0, 10);;
 
 	// useState for input fields
-	const [form, setForm] = useState({
-		date: todayDate,
-		name: '',
-		amount: Number(num),
-	});
+	const [date, setDate] = useState(todayDate);
+	const [description, setDescription] = useState('');
+	const [category, setCategory] = useState('');
+	const [method, setMethod] = useState('');
+	const [amount, setAmount] = useState(Number(num));
 
-	// Submit function 🚀 - Handle form submission
-	/* const handleSubmit = async () => {
+	// Handle change events
+	const handleDateChange = (event) => setDate(event.target.value);
+	const handleDescriptionChange = (event) => setDescription(event.target.value);
+	const handleCategoryChange = (event) => setCategory(event.target.value);
+	const handleMethodChange = (event) => setMethod(event.target.value);
+	const handleAmountChange = (event) => setAmount(event.target.value);
+
+	// Submit function 🚀 - Handle data submission
+	const handleSubmit = async () => {
+		// This function could be form onSubmit or onClick button
+		// New object
 		const newExpense = {
 			date: date,
-			name: name,
+			description: description,
+			category: category,
+			method: method,
 			amount: amount,
 		};
 
+		// Submit form to database
 		try {
-			await axios.post('http://localhost:5005/api/expenses', newExpense);
+			await addExpensesService(newExpense)
+			// navigate("/expenses")
 			props.getExpenses();
-		} catch (error) {
-			// ...
+		} catch (err) {
 			navigate('/error');
 		}
-	}; */
-
-	// Handle change events from input fields
-	const onChange = e => {
-		const { value, name } = e.target;
-
-		setForm(state => ({
-			...state,
-			[name]: value,
-		}));
 	};
 
-	// Show data on the console
-	const showData = () => {
-		console.log('Form: ', form);
-	};
-
-	// Prevent refreshing page
-	const onSubmit = e => {
-		e.preventDefault();
-
-		showData();
-	};
-
-	// HTML render
 	return (
 		<div className='expense--form'>
 			<h3>Add your expense</h3>
 
-			<form onSubmit={onSubmit}>
+				{/* <form> */}
 				{/* Date field */}
 				<label>Date</label>
-				<input type='date' name='date' value={form.date} onChange={onChange} />
+				<input
+					type='date'
+					name='date'
+					value={date}
+					onChange={handleDateChange}
+				/>
 
-				{/* Name field */}
-				<label>Name</label>
-				<input type='text' name='name' value={form.name} onChange={onChange} />
+				{/* Desription field */}
+				<label>Description</label>
+				<input
+					type='text'
+					name='description'
+					value={description}
+					onChange={handleDescriptionChange}
+				/>
+
+				{/* Category field */}
+				<label>Category</label>
+				<select
+					name='category'
+					value={category}
+					onChange={handleCategoryChange}
+				>
+					<option value='bills'>Bills</option>
+					<option value='groceries'>Groceries</option>
+				</select>
+
+				{/* Method field */}
+				<label>Method</label>
+				<select name='method' value={method} onChange={handleMethodChange}>
+					<option value='cash'>Cash</option>
+					<option value='card'>Card</option>
+				</select>
 
 				{/* Amount field */}
 				<label>Amount</label>
 				<input
 					type='number'
 					name='amount'
-					value={form.amount}
-					onChange={onChange}
+					value={amount}
+					onChange={handleAmountChange}
 				/>
 
 				{/* Button to submit data */}
-				<button>Fill it out!</button>
-			</form>
+				<button onClick={handleSubmit}>Fill it out!</button>
+				{/* </form> */}
+
 		</div>
 	);
 };
