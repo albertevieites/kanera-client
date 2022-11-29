@@ -10,6 +10,11 @@
     border: 2px solid darkblue;
   }
 
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
   &__content {
     display: flex;
     gap: 2em;
@@ -23,5 +28,20 @@
     justify-content: space-between;
 
     font-weight: 600;
+  }
+}
+
+table {
+  min-width: 100%;
+
+  th {
+    background-color:lavender;
+    padding: 1em 0;
+    text-align: left;
+  }
+
+  td {
+    padding: 12px 15px;
+    border-bottom: 1px solid grey;
   }
 }

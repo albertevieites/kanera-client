@@ -40,9 +40,16 @@ const ExpenseForm = (props) => {
 
 		// Submit form to database
 		try {
-			await addExpensesService(newExpense)
+			await addExpensesService(newExpense);
 			// navigate("/expenses")
 			props.getExpenses();
+
+			// Reset inpu fields
+			setDate(todayDate);
+			setDescription('');
+			setCategory('');
+			setMethod('');
+			setAmount(Number(num));
 		} catch (err) {
 			navigate('/error');
 		}
@@ -52,56 +59,76 @@ const ExpenseForm = (props) => {
 		<div className='expense--form'>
 			<h3>Add your expense</h3>
 
+			<div className='expense--form__container'>
 				{/* <form> */}
 				{/* Date field */}
-				<label>Date</label>
-				<input
-					type='date'
-					name='date'
-					value={date}
-					onChange={handleDateChange}
-				/>
-
+				<div className='expense--form__date'>
+					<label>Date</label>
+					<input
+						type='date'
+						name='date'
+						value={date}
+						onChange={handleDateChange}
+					/>
+				</div>
 				{/* Desription field */}
-				<label>Description</label>
-				<input
-					type='text'
-					name='description'
-					value={description}
-					onChange={handleDescriptionChange}
-				/>
-
+				<div className='expense--form__description'>
+					<label>Description</label>
+					<input
+						type='text'
+						name='description'
+						value={description}
+						onChange={handleDescriptionChange}
+					/>
+				</div>
 				{/* Category field */}
-				<label>Category</label>
-				<select
-					name='category'
-					value={category}
-					onChange={handleCategoryChange}
-				>
-					<option value='bills'>Bills</option>
-					<option value='groceries'>Groceries</option>
-				</select>
-
+				<div className='expense--form__category'>
+					<label>Category</label>
+					<select
+						name='category'
+						value={category}
+						onChange={handleCategoryChange}
+					>
+						<option value='Bills'>Bills</option>
+						<option value='Charity'>Charity</option>
+						<option value='Concerts'>Concerts</option>
+						<option value='Shopping'>Shopping</option>
+						<option value='Eating Out'>Eating Out</option>
+						<option value='Entertainment'>Entertainment</option>
+						<option value='Finances'>Finances</option>
+						<option value='General'>General</option>
+						<option value='Gifts'>Gifts</option>
+						<option value='Groceries'>Groceries</option>
+						<option value='Gym'>Gym</option>
+						<option value='Healthcare'>Healthcare</option>
+						<option value='Holidays'>Holidays</option>
+						<option value='Housing'>Housing</option>
+						<option value='Transportation'>Transportation</option>
+					</select>
+				</div>
 				{/* Method field */}
-				<label>Method</label>
-				<select name='method' value={method} onChange={handleMethodChange}>
-					<option value='cash'>Cash</option>
-					<option value='card'>Card</option>
-				</select>
-
+				<div className='expense--form__method'>
+					<label>Method</label>
+					<select name='method' value={method} onChange={handleMethodChange}>
+						<option value='Card'>Card</option>
+						<option value='Cash'>Cash</option>
+						<option value='Direct Debit'>Direct Debit</option>
+					</select>
+				</div>
 				{/* Amount field */}
-				<label>Amount</label>
-				<input
-					type='number'
-					name='amount'
-					value={amount}
-					onChange={handleAmountChange}
-				/>
-
-				{/* Button to submit data */}
-				<button onClick={handleSubmit}>Fill it out!</button>
-				{/* </form> */}
-
+				<div className='expense--form__amount'>
+					<label>Amount</label>
+					<input
+						type='number'
+						name='amount'
+						value={amount}
+						onChange={handleAmountChange}
+					/>
+				</div>
+			</div>
+			{/* Button to submit data */}
+			<button onClick={handleSubmit}>Fill it out!</button>
+			{/* </form> */}
 		</div>
 	);
 };

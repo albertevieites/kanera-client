@@ -2,8 +2,12 @@
   margin: 2em;
   border: 2px solid darkblue;
 
+  &__container {
+    display: flex;
+  }
+
   input {
-    border: 1px solid green;
+    border: 1px solid grey;
   }
   button {
     margin: 2em;
