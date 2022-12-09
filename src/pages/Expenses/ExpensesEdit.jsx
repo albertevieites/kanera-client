@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-// Services
-import { addExpensesService } from '../../services/expenses.services';
+import { getExpenseDetailsService, updateExpenseService } from '../../services/expenses.services';
 
-const ExpenseForm = (props) => {
+const ExpensesEdit = () => {
 	// useNavigate for handling redirection
 	const navigate = useNavigate();
+
+	// id
+	const { id } = useParams();
 
 	// variables
 	const todayDate = new Date().toISOString().slice(0, 10);
@@ -26,43 +28,50 @@ const ExpenseForm = (props) => {
 	const handleMethodChange = (event) => setMethod(event.target.value);
 	const handleAmountChange = (event) => setAmount(event.target.value);
 
-	// Submit function 🚀 - Handle data submission
-	const handleSubmit = async () => {
-		// This function could be form onSubmit or onClick button
-		// New object
-		const newExpense = {
-			date: date,
-			description: description,
-			category: category,
-			method: method,
-			amount: amount,
-		};
+	useEffect(() => {
+		getExpensesDetails();
+	}, []);
 
-		// Submit form to database
+	const getExpensesDetails = async () => {
 		try {
-			await addExpensesService(newExpense);
-			// navigate("/expenses")
-			props.getExpenses();
-
-			// Reset input fields
-			setDate(todayDate);
-			setDescription('');
-			setCategory('');
-			setMethod('');
-			setAmount(Number(num));
-		} catch (err) {
+			const response = await getExpenseDetailsService(id);
+			console.log(response.data);
+			setDate(response.data.date);
+			setDescription(response.data.description);
+			setCategory(response.data.category);
+			setMethod(response.data.method);
+			setAmount(response.data.amount);
+		} catch (error) {
 			navigate('/error');
 		}
 	};
 
-	return (
-		<div className='expense--form'>
-			<h3>Add your expense</h3>
+	const handleEdit = async ()=> {
+		const expenseObj = {
+			date,
+			description,
+			category,
+			method,
+			amount
+		}
 
-			<div className='expense--form__container'>
+		try {
+			await updateExpenseService(id, expenseObj);
+			navigate('/expenses');
+		} catch (error) {
+			navigate("/error")
+		}
+	}
+
+
+	return (
+		<div className='expenses--edit'>
+			<h3>Update your expense</h3>
+
+			<div className='expenses--edit__container'>
 				{/* <form> */}
 				{/* Date field */}
-				<div className='expense--form__date'>
+				<div className='expenses--edit__date'>
 					<label>Date</label>
 					<input
 						type='date'
@@ -72,7 +81,7 @@ const ExpenseForm = (props) => {
 					/>
 				</div>
 				{/* Desription field */}
-				<div className='expense--form__description'>
+				<div className='expenses--edit__description'>
 					<label>Description</label>
 					<input
 						type='text'
@@ -82,7 +91,7 @@ const ExpenseForm = (props) => {
 					/>
 				</div>
 				{/* Category field */}
-				<div className='expense--form__category'>
+				<div className='expenses--edit__category'>
 					<label>Category</label>
 					<select
 						name='category'
@@ -107,7 +116,7 @@ const ExpenseForm = (props) => {
 					</select>
 				</div>
 				{/* Method field */}
-				<div className='expense--form__method'>
+				<div className='expenses--edit__method'>
 					<label>Method</label>
 					<select name='method' value={method} onChange={handleMethodChange}>
 						<option value='Card'>Card</option>
@@ -116,7 +125,7 @@ const ExpenseForm = (props) => {
 					</select>
 				</div>
 				{/* Amount field */}
-				<div className='expense--form__amount'>
+				<div className='expenses--edit__amount'>
 					<label>Amount</label>
 					<input
 						type='number'
@@ -127,10 +136,9 @@ const ExpenseForm = (props) => {
 				</div>
 			</div>
 			{/* Button to submit data */}
-			<button onClick={handleSubmit}>Fill it out!</button>
-			{/* </form> */}
+			<button onClick={handleEdit}>Update</button>
 		</div>
 	);
 };
 
-export default ExpenseForm;
+export default ExpensesEdit;

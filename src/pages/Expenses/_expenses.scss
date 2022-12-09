@@ -29,19 +29,20 @@
 
     font-weight: 600;
   }
-}
 
-table {
-  min-width: 100%;
+  table {
+    th {
+      padding: 1em 0;
+      text-align: left;
+    }
 
-  th {
-    background-color:lavender;
-    padding: 1em 0;
-    text-align: left;
-  }
+    thead {
+      background-color: aliceblue;
+    }
 
-  td {
-    padding: 12px 15px;
-    border-bottom: 1px solid grey;
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid grey;
+    }
   }
 }

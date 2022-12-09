@@ -7,9 +7,12 @@ function ReadRowExpense({ eachExpense, handleEditClick }) {
 			<td>{eachExpense.description}</td>
 			<td>{eachExpense.category}</td>
 			<td>{eachExpense.method}</td>
-			<td>£{eachExpense.amount}</td>
+			<td>{eachExpense.amount}</td>
 			<td>
 				<button type='button' onClick={(event => handleEditClick(event, eachExpense))}>Edit</button>
+			</td>
+			<td>
+				<button>Delete</button>
 			</td>
 		</tr>
 	);

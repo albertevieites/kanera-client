@@ -1,7 +1,31 @@
 .income {
   width: 100%;
+  padding: 1em 2em;
   background-color: aqua;
   h1 {
-    padding: 1em;
+    padding-bottom: 1em;
+  }
+  &__container {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+  }
+
+  &__list {
+    border: 1px solid black;
+  }
+
+  table {
+    th {
+      padding: .7em;
+      text-align: left;
+    }
+    thead {
+      background-color: bisque;
+    }
+    td {
+      padding: 12px 15px;
+      border-bottom: 1px solid grey;
+    }
   }
 }
