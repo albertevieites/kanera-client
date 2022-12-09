@@ -6,6 +6,8 @@ import Navbar from "../Navbar/Navbar";
 import Home from "../../pages/Home/Home";
 import Income from "../../pages/Income/Income";
 import Expenses from "../../pages/Expenses/Expenses";
+import ExpensesDetails from "../../pages/Expenses/ExpensesDetails";
+import ExpensesEdit from "../../pages/Expenses/ExpensesEdit";
 import Budget from "../../pages/Budget/Budget";
 import Profile from "../../pages/Profile/Profile";
 import Error from "../../pages/Error/Error";
@@ -23,6 +25,8 @@ function App() {
         <Route path="/" element={ <Home/> } />
         <Route path="/income" element={ <Income/> }/>
         <Route path="/expenses" element={ <Expenses/> }/>
+        <Route path="/expenses/:id" element={ <ExpensesDetails/> }/>
+        <Route path="/expenses/edit/:id" element={ <ExpensesEdit /> }/>
         <Route path="/budget" element={ <Budget/> } />
         <Route path="/profile" element={ <Profile/> } />
 

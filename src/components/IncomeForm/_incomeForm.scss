@@ -1,0 +1,17 @@
+.income--form {
+  &__list {
+    display: flex;
+    gap: 2em;
+
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: azure;
+  }
+
+  button {
+    margin: 2em;
+    padding: .7em;
+    background-color: aliceblue;
+    border: 1px solid black; 
+  }
+}
