@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 
 import Home from "../../pages/Home/Home";
 import Income from "../../pages/Income/Income";
+import IncomeEdit from "../../pages/Income/IncomeEdit";
 import Expenses from "../../pages/Expenses/Expenses";
 import ExpensesDetails from "../../pages/Expenses/ExpensesDetails";
 import ExpensesEdit from "../../pages/Expenses/ExpensesEdit";
@@ -24,6 +25,7 @@ function App() {
 
         <Route path="/" element={ <Home/> } />
         <Route path="/income" element={ <Income/> }/>
+        <Route path="/income/edit/:id" element={ <IncomeEdit/> }/>
         <Route path="/expenses" element={ <Expenses/> }/>
         <Route path="/expenses/:id" element={ <ExpensesDetails/> }/>
         <Route path="/expenses/edit/:id" element={ <ExpensesEdit /> }/>

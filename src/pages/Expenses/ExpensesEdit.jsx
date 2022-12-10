@@ -4,11 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getExpenseDetailsService, updateExpenseService } from '../../services/expenses.services';
 
 const ExpensesEdit = () => {
-	// useNavigate for handling redirection
-	const navigate = useNavigate();
-
 	// id
 	const { id } = useParams();
+
+	// useNavigate for handling redirection
+	const navigate = useNavigate();
 
 	// variables
 	const todayDate = new Date().toISOString().slice(0, 10);
