@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "../Navbar/Navbar";
@@ -13,10 +12,10 @@ import Budget from "../../pages/Budget/Budget";
 import Profile from "../../pages/Profile/Profile";
 import Error from "../../pages/Error/Error";
 import NotFound from "../../pages/NotFound/NotFound";
+import Signup from "../../pages/Auth/Signup";
+import Login from "../../pages/Auth/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
       <Navbar />
@@ -31,6 +30,8 @@ function App() {
         <Route path="/expenses/edit/:id" element={ <ExpensesEdit /> }/>
         <Route path="/budget" element={ <Budget/> } />
         <Route path="/profile" element={ <Profile/> } />
+        <Route path="/signup" element={ <Signup/> } />
+        <Route path="/login" element={ <Login/> } />
 
         {/* Components for error handling */}
         <Route path="/error" element={ <Error/> } />
