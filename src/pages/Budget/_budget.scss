@@ -1,0 +1,13 @@
+.budget {
+  width: 100%;
+  padding: 1em 2em;
+  background-color: pink;
+  h1 {
+    padding-bottom: 1em;
+  }
+  &__graphic {
+    width: 20em;
+    height: 20em;
+    background-color: violet;
+  }
+}
