@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { AuthContext } from '../../context/auth.context';
 import { loginService } from '../../services/auth.services';
 
 function Login() {
+	const { authenticateUser } = useContext(AuthContext);
 	const navigate = useNavigate();
 
 	const [email, setEmail] = useState('');
@@ -27,8 +29,17 @@ function Login() {
 
 			const authToken = response.data.authToken;
 
+			// Save token in localStorage
 			localStorage.setItem('authToken', authToken);
+
+			// Invoke function from context to contact with verifyService
+			authenticateUser();
+
+			// ! Here redirect to some private page
+			
 		} catch (error) {
+			console.log(error.response.status);
+			console.log(error.response.data.errorMessage);
 			if (error.response.status === 400) {
 				setErrorMessage(error.response.data.errorMessage);
 			} else {
@@ -62,7 +73,7 @@ function Login() {
 					/>
 				</div>
 
-				{errorMessage && <p>{errorMessage}</p>}
+				{errorMessage && <p className='login__error'>{errorMessage}</p>}
 				<button type='submit'>Login</button>
 			</form>
 		</div>
