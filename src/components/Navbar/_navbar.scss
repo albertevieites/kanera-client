@@ -8,3 +8,21 @@
     border: 1px solid red;
   }
 }
+
+.navbar--active {
+  width:15.625em;
+  height: 100vh;
+  padding: 1em;
+  background-color: aquamarine;
+
+  a {
+    border: 1px solid red;
+  }
+  &__email {
+    margin: 2em 0;
+    padding: 1em 0;
+    background-color: yellowgreen;
+
+    text-align: center;
+  }
+}

@@ -1,26 +1,35 @@
 .signup {
-  width: 100%;
-  padding: 1em 2em;
-  background-color: skyblue;
+	width: 100%;
+	padding: 1em 2em;
+	background-color: skyblue;
 
-  h1 {
-    margin-bottom: 1em;
-  }
+	h1 {
+		margin-bottom: 1em;
+	}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
 
-    border: 1px solid black;
+		border: 1px solid black;
 
-    div {
-      border: 1px solid green;
-    }
-  }
-  button {
-    padding: 1em 0;
-    background-color: red;
-    border: 1px solid black;
-  }
+		div {
+			border: 1px solid green;
+		}
+	}
+	button {
+		padding: 1em 0;
+		background-color: red;
+		border: 1px solid black;
+	}
+
+	&__error {
+		width: 20em;
+		margin: 0 auto;
+		padding: 1em 0;
+		border: 3px solid red;
+
+		text-align: center;
+	}
 }
