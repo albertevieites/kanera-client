@@ -1,4 +1,4 @@
-import { useContext, useReducer } from 'react';
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth.context';
@@ -6,21 +6,21 @@ import { AuthContext } from '../../context/auth.context';
 const Navbar = () => {
 	const navigate = useNavigate();
 
-	const { isUserActive, user, authenticateUser } = useContext(AuthContext);
+	const { isLoggedIn, user, authenticateUser } = useContext(AuthContext);
 
 	const handleLogout = () => {
 		// Destroy token
-		localStorage.removeItem("authToken");
+		localStorage.removeItem('authToken');
 		// Authenticate user
 		authenticateUser();
 		// Redirect
-		navigate("/");
-	}
+		navigate('/');
+	};
 
-	if (isUserActive === true) {
+	if (isLoggedIn === true) {
 		return (
 			<div className='navbar--active'>
-				<Link to='/'>KANERA</Link>
+				<Link to='/dashboard'>KANERA</Link>
 				<Link to='/income'>Income</Link>
 				<Link to='/expenses'>Expenses</Link>
 				<Link to='/budget'>Budget</Link>
@@ -32,7 +32,7 @@ const Navbar = () => {
 	} else {
 		return (
 			<div className='navbar'>
-				<Link to='/signup'>Signup</Link>
+				<Link to='/signup'>Try it for free</Link>
 				<Link to='/login'>Login</Link>
 			</div>
 		);

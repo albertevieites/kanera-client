@@ -35,8 +35,10 @@ function Login() {
 			// Invoke function from context to contact with verifyService
 			authenticateUser();
 
+			navigate("/dashboard");
+
 			// ! Here redirect to some private page
-			
+
 		} catch (error) {
 			console.log(error.response.status);
 			console.log(error.response.data.errorMessage);
