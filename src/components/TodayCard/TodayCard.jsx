@@ -1,6 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { getExpensesService } from '../../services/expenses.services';
 
 function TodayCard() {
 	// Hooks
@@ -16,7 +17,7 @@ function TodayCard() {
 	// Axios
 	const getExpenses = async () => {
 		try {
-			const response = await axios.get('http://localhost:5005/api/expenses');
+			const response = await getExpensesService();
 			console.log(response.data);
 			setAllExpenses(response.data);
 			setIsFetching(false);
