@@ -32,8 +32,8 @@ const Navbar = () => {
 	} else {
 		return (
 			<div className='navbar'>
-				<Link to='/signup'>Try it for free</Link>
-				<Link to='/login'>Login</Link>
+				<Link to='/signup' className='navbar__signup'>Try it for free</Link>
+				<Link to='/login' className='navbar__login'>Login</Link>
 			</div>
 		);
 	}

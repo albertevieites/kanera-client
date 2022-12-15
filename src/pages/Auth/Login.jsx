@@ -1,8 +1,10 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth.context';
 import { loginService } from '../../services/auth.services';
+
+import KaneraLogo from '/kanera.svg';
 
 function Login() {
 	const { authenticateUser } = useContext(AuthContext);
@@ -28,6 +30,7 @@ function Login() {
 			console.log(response.data);
 
 			const authToken = response.data.authToken;
+			console.log(authToken);
 
 			// Save token in localStorage
 			localStorage.setItem('authToken', authToken);
@@ -35,10 +38,9 @@ function Login() {
 			// Invoke function from context to contact with verifyService
 			authenticateUser();
 
-			navigate("/dashboard");
+			navigate('/dashboard');
 
 			// ! Here redirect to some private page
-
 		} catch (error) {
 			console.log(error.response.status);
 			console.log(error.response.data.errorMessage);
@@ -52,32 +54,39 @@ function Login() {
 
 	return (
 		<div className='login'>
-			<h1>Login</h1>
+			<div className='login__fields'>
+				<Link to='/'>
+					<img src={KaneraLogo} alt='kanera logo' />
+				</Link>
 
-			<form onSubmit={handleLogin}>
-				<div className='login__email'>
-					<label>Email</label>
-					<input
-						type='email'
-						name='email'
-						value={email}
-						onChange={handleEmailChange}
-					/>
-				</div>
+				<form onSubmit={handleLogin}>
+					<h3>Hi, Welcome back!</h3>
+					<div className='login__email'>
+						<label>Email</label>
+						<input
+							type='email'
+							name='email'
+							placeholder='faemino@kanera.com'
+							value={email}
+							onChange={handleEmailChange}
+						/>
+					</div>
+					<div className='login__password'>
+						<label>Password</label>
+						<input
+							type='password'
+							name='password'
+							placeholder='**************'
+							value={password}
+							onChange={handlePasswordChange}
+						/>
+					</div>
+					{errorMessage && <p className='login__error'>{errorMessage}</p>}
+					<button type='submit'>Login</button>
+				</form>
+			</div>
 
-				<div className='login__password'>
-					<label>Password</label>
-					<input
-						type='password'
-						name='password'
-						value={password}
-						onChange={handlePasswordChange}
-					/>
-				</div>
-
-				{errorMessage && <p className='login__error'>{errorMessage}</p>}
-				<button type='submit'>Login</button>
-			</form>
+			<div className='login__graphic'></div>
 		</div>
 	);
 }
