@@ -1,11 +1,43 @@
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
+
 .navbar {
-  width:15.625em;
-  height: 100vh;
-  padding: 1em;
-  background-color: aquamarine;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10rem;
+
+  width: 100%;
+  padding: 5em;
+  background-color: $clr-background;
 
   a {
-    border: 1px solid red;
+    font-size: $f-s-440;
+    font-weight: $f-w-800;
+  }
+
+  &__signup {
+    width: 10rem;
+    padding: .6rem 1.3em;
+    background-color: $clr-terciary;
+    border-radius: 2rem;
+
+    text-align: center;
+    color: $clr-background;
+  }
+
+  &__login {
+    width: 10rem;
+    padding: .6rem 1.3em;
+    border-radius: 2rem;
+
+    text-align: center;
+    color: $clr-terciary;
+
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 }
 
@@ -17,6 +49,13 @@
 
   a {
     border: 1px solid red;
+  }
+  button {
+    margin: 2em auto;
+    padding: .5em .5em;
+    background-color: darkred;
+    border-radius: .5em;
+    color: white;
   }
   &__email {
     margin: 2em 0;
