@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth.context';
 
+import KaneraLogo from "/kanera-white.svg"
+
 const Navbar = () => {
 	const navigate = useNavigate();
 
@@ -20,7 +22,9 @@ const Navbar = () => {
 	if (isLoggedIn === true) {
 		return (
 			<div className='navbar--active'>
-				<Link to='/dashboard'>KANERA</Link>
+				<Link to='/dashboard'>
+					<img src={KaneraLogo} alt="kanera logo" />
+				</Link>
 				<Link to='/income'>Income</Link>
 				<Link to='/expenses'>Expenses</Link>
 				<Link to='/budget'>Budget</Link>

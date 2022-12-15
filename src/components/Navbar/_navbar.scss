@@ -45,11 +45,10 @@
   width:15.625em;
   height: 100vh;
   padding: 1em;
-  background-color: aquamarine;
+  background-color: $clr-secondary;
 
-  a {
-    border: 1px solid red;
-  }
+  color: $clr-background;
+
   button {
     margin: 2em auto;
     padding: .5em .5em;
