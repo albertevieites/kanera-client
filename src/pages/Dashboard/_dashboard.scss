@@ -1,0 +1,14 @@
+@use "../../styles/abstracts/colors" as *;
+@use "../../styles/abstracts/fonts" as *;
+
+.dashboard {
+  width: 100%;
+
+  &>h2 {
+    margin-left: 2rem;
+    margin-top: 2rem;
+
+    font-weight: $f-w-700;
+    color: $clr-grey;
+  }
+}

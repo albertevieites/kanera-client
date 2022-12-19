@@ -4,7 +4,7 @@ import TodayCard from '../../components/TodayCard/TodayCard'
 function Dashboard() {
   return (
     <div className='dashboard'>
-      <h1>Dashboard</h1>
+      <h2>Dashboard</h2>
       <TodayCard />
     </div>
   )
