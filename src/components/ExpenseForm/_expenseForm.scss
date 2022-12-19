@@ -1,23 +1,36 @@
+@use "../../styles/abstracts/colors" as *;
+@use "../../styles/abstracts/fonts" as *;
+
 .expense--form {
   margin: 2em;
-  border: 2px solid darkblue;
+  padding: 2em;
+
+  color: $clr-grey;
 
   &__container {
     display: flex;
   }
 
   input {
-    border: 1px solid grey;
+    margin-right: 1em;
+    padding: .5em;
+    border-radius: .5rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
-  button {
-    margin: 2em;
-    padding: .7em;
-    background-color: aliceblue;
 
-    border: 1px solid black;
-    &:hover {
-      background-color: black;
-      color: white;
-    }
+  select {
+    margin-right: 1em;
+    padding: .5em;
+    border-radius: .5rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+  button {
+    margin: 2em 0;
+    padding: .5em 3em;
+    background-color: $clr-terciary;
+    border-radius: .5rem;
+
+    color: $clr-background;
   }
 }

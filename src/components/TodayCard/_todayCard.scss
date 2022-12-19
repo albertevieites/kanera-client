@@ -1,3 +1,6 @@
+@use "../../styles/abstracts/colors" as *;
+@use "../../styles/abstracts/fonts" as *;
+
 .today {
   display: flex;
   flex-direction: column;
@@ -5,18 +8,24 @@
   width: 30vw;
   margin-top: 2em;
   margin-left: 2em;
-  padding: .7em;
+  padding: 2em;
+  background-color: $clr-secondary;
+  border-radius: 1.25rem;
 
-  border: 2px solid darkblue;
+  color: $clr-background;
 
   &__title {
     display: flex;
     justify-content: space-between;
+
+    padding-bottom: .7rem;
+    border-bottom: .03rem solid $clr-background;
   }
 
   &__date {
     display: flex;
     align-items: center;
+    gap: .7em;
   }
 
   &__expenses {

@@ -19,6 +19,7 @@
     font-weight: $f-w-800;
   }
 
+
   &__signup {
     width: 10rem;
     padding: .6rem 1.3em;
@@ -49,6 +50,14 @@
 
   color: $clr-background;
 
+  a {
+    display: flex;
+    align-items: flex-end;
+    gap: .7em;
+
+    margin-bottom: .7em;
+  }
+
   button {
     margin: 2em auto;
     padding: .5em .5em;
@@ -56,11 +65,13 @@
     border-radius: .5em;
     color: white;
   }
+
   &__email {
     margin: 2em 0;
-    padding: 1em 0;
-    background-color: yellowgreen;
+    padding: 1em 1em;
+    background-color: $clr-background;
 
     text-align: center;
+    color: $clr-secondary;
   }
 }

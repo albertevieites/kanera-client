@@ -39,7 +39,7 @@ function IncomeForm(props) {
 			<h3>IncomeForm</h3>
 
 			<div className='income--form__container'>
-				<div className='income--form__list'>
+				<div className='income--form__fields'>
 					<div className='income--form__date'>
 						<label>Date</label>
 						<input

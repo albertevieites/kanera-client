@@ -65,7 +65,7 @@ const Income = () => {
 									<tr key={eachIncome._id}>
 										<td>{eachIncome.date}</td>
 										<td>{eachIncome.type}</td>
-										<td>{eachIncome.amount}</td>
+										<td>£{eachIncome.amount}</td>
 										<td>
 											<button>Delete</button>
 											<Link to={`/income/edit/${eachIncome._id}`}>
