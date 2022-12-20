@@ -17,6 +17,7 @@
   &__title {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 
     padding-bottom: .7rem;
     border-bottom: .03rem solid $clr-background;
