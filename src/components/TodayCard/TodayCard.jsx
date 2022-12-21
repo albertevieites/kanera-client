@@ -51,7 +51,7 @@ function TodayCard() {
 					<div className='today__date--right'>
 						<p>{weekDay}</p>
 						<span>{month}</span>
-						<span>{year}</span>
+						<span> {year}</span>
 					</div>
 				</div>
 			</div>

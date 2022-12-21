@@ -1,0 +1,64 @@
+@use "../../styles/abstracts/_fonts" as *;
+@use "../../styles/abstracts/colors" as *;
+
+.profile {
+  padding: 2em 0 0 2em;
+
+  h1 {
+    color: $clr-grey;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 80vw;
+    height: 80vh;
+  }
+
+  &__user {
+    img {
+      margin-bottom: 1em;
+      border: .2rem solid $clr-secondary;
+      border-radius: 50%;
+    }
+
+    h2 {
+      margin-bottom: .1em;
+
+      font-weight: $f-w-600;
+    }
+
+    p {
+      margin-bottom: 2em;
+
+      font-size: $f-s-340;
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      padding: .3em;
+      background-color: $clr-terciary;
+      border-radius: .125rem;
+
+      color: $clr-background;
+    }
+  }
+
+  &__data {
+    & div {
+      display: flex;
+      justify-content: space-between;
+      gap: 5em;
+
+      margin-bottom: 1em; 
+  padding: .7em 1.7em;
+      background-color: $clr-secondary;
+      border-radius: .125rem;
+
+      color: $clr-background;
+    }
+  }
+}

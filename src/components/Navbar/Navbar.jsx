@@ -3,9 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth.context';
 
-import BudgetIcon from '/icons/budget.svg';
-import ExpensesIcon from '/icons/expenses.svg';
-import IncomeIcon from '/icons/income.svg';
 import KaneraLogo from '/kanera-white.svg';
 
 const Navbar = () => {
@@ -29,18 +26,17 @@ const Navbar = () => {
 					<img src={KaneraLogo} alt='kanera logo' />
 				</Link>
 				<Link to='/income'>
-					<img src={IncomeIcon} alt='Income icon' />
 					<p>Income</p>
 				</Link>
 				<Link to='/expenses'>
-					<img src={ExpensesIcon} alt='Expenses Icon' />
 					<p>Expenses</p>
 				</Link>
 				<Link to='/budget'>
-					<img src={BudgetIcon} alt='Budget Icon' />
 					<p>Budget</p>
 				</Link>
-				<Link to='/profile'>Profile</Link>
+				<Link to={`/profile/${user._id}`}>
+					<p>Profile</p>
+				</Link>
 				<button onClick={handleLogout}>Logout</button>
 				<p className='navbar--active__email'>{user.email}</p>
 			</div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { getProfileService } from '../../services/profile.services';
 
@@ -38,6 +38,7 @@ const Profile = () => {
 		city,
 		country,
 		userPhotoUrl,
+		_id
 	} = singleProfile;
 
 	return (
@@ -49,7 +50,9 @@ const Profile = () => {
 					<img src={userPhotoUrl} alt='photo user' />
 					<h2>{fullname}</h2>
 					<p>{email}</p>
-					<button>Edit</button>
+					<Link to={`/profile/edit/${_id}`}>
+						<button>Edit</button>
+					</Link>
 				</div>
 
 				<div className='profile__data'>

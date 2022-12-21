@@ -16,17 +16,18 @@ import Income from '../../pages/Income/Income';
 import IncomeEdit from '../../pages/Income/IncomeEdit';
 import NotFound from '../../pages/NotFound/NotFound';
 import Profile from '../../pages/Profile/Profile';
+import ProfileEdit from '../../pages/Profile/ProfileEdit';
 import IsAnon from '../IsAnon/IsAnon';
 import IsPrivate from '../IsPrivate/IsPrivate';
 
 function App() {
-	const {pathname} = useLocation();
+	const { pathname } = useLocation();
 
 	return (
 		<Layout>
 			<div className='App'>
 				{/* <Navbar /> */}
-				{pathname !== "/login" && pathname !== "/signup" && <Navbar />}
+				{pathname !== '/login' && pathname !== '/signup' && <Navbar />}
 
 				<Routes>
 					{/* Initial page */}
@@ -113,10 +114,18 @@ function App() {
 						}
 					/>
 					<Route
-						path='/profile'
+						path='/profile/:id'
 						element={
 							<IsPrivate>
 								<Profile />
+							</IsPrivate>
+						}
+					/>
+					<Route
+						path='/profile/edit/:id'
+						element={
+							<IsPrivate>
+								<ProfileEdit />
 							</IsPrivate>
 						}
 					/>

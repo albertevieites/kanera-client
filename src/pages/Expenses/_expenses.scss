@@ -2,11 +2,8 @@
 @use "../../styles/abstracts/colors" as *;
 
 .expenses {
-  width: 100%;
-  background-color: $clr-background;
-
   h1 {
-    padding: 2em;
+    padding: 2em 0 0 2em;
 
     color: $clr-grey;
   }
