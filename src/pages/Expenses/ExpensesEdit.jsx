@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import moment from 'moment';
 
 import { getExpenseDetailsService, updateExpenseService } from '../../services/expenses.services';
 
@@ -11,11 +12,11 @@ const ExpensesEdit = () => {
 	const navigate = useNavigate();
 
 	// variables
-	const todayDate = new Date().toISOString().slice(0, 10);
+	const newDate = new Date();
 	const num = 0;
 
 	// useState for input fields
-	const [date, setDate] = useState(todayDate);
+	const [date, setDate] = useState(newDate);
 	const [description, setDescription] = useState('');
 	const [category, setCategory] = useState('');
 	const [method, setMethod] = useState('');
@@ -76,7 +77,7 @@ const ExpensesEdit = () => {
 					<input
 						type='date'
 						name='date'
-						value={date}
+						value={moment(date).format('YYYY-MM-DD')}
 						onChange={handleDateChange}
 					/>
 				</div>
