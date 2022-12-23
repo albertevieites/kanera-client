@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { getIncomeService } from '../../services/income.services';
+import { getIncomeService, deleteIncomeService } from '../../services/income.services';
 
 import IncomeForm from '../../components/IncomeForm/IncomeForm';
 
@@ -13,7 +13,7 @@ const Income = () => {
 
 	useEffect(() => {
 		getIncome();
-	},[]);
+	}, []);
 
 	const getIncome = async () => {
 		try {
@@ -26,13 +26,15 @@ const Income = () => {
 		}
 	};
 
-	/* const handleDelete = async () => {
+	// Delete single income
+	const handleDelete = async (id) => {
 		try {
 			await deleteIncomeService(id);
+			getIncome();
 		} catch (error) {
 			navigate('/error');
 		}
-	}; */
+	};
 
 	if (isFetching === true) {
 		return <h3>... is Loading</h3>;
@@ -67,7 +69,7 @@ const Income = () => {
 										<td>{eachIncome.type}</td>
 										<td>£{eachIncome.amount}</td>
 										<td>
-											<button>Delete</button>
+											<button onClick={() => handleDelete(eachIncome._id)}>Delete</button>
 											<Link to={`/income/edit/${eachIncome._id}`}>
 												<button>Edit</button>
 											</Link>

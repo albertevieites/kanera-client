@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 // Import Services
-import { getExpensesService } from '../../services/expenses.services';
+import { getExpensesService, deleteExpenseService } from '../../services/expenses.services';
 
 // Components
 import ExpenseForm from '../../components/ExpenseForm/ExpenseForm';
@@ -28,14 +28,15 @@ const Expenses = () => {
 		}
 	};
 
-	/* const handleDelete = async () => {
+	// Delete single expense
+	const handleDelete = async (id) => {
 		try {
 			await deleteExpenseService(id);
 			getExpenses();
 		} catch (error) {
 			navigate('/error');
 		}
-	}; */
+	};
 
 	if (isFetching === true) {
 		return <h3>... is Loading</h3>;
@@ -74,7 +75,7 @@ const Expenses = () => {
 										<td>{eachExpense.method}</td>
 										<td>£{eachExpense.amount}</td>
 										<td>
-											<button>Delete</button>
+											<button onClick={() => handleDelete(eachExpense._id)}>Delete</button>
 											<Link to={`/expenses/edit/${eachExpense._id}`}>
 												<button>Edit</button>
 											</Link>

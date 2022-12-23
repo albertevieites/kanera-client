@@ -6,17 +6,18 @@ import { AuthContext } from '../../context/auth.context';
 import KaneraLogo from '/kanera-white.svg';
 
 const Navbar = () => {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const { isLoggedIn, user, authenticateUser } = useContext(AuthContext);
 
+	// Logout
 	const handleLogout = () => {
 		// Destroy token
 		localStorage.removeItem('authToken');
 		// Authenticate user
 		authenticateUser();
 		// Redirect
-		navigate('/');
+		/* navigate('/'); */
 	};
 
 	if (isLoggedIn === true) {
@@ -38,7 +39,7 @@ const Navbar = () => {
 					<p>Profile</p>
 				</Link>
 				<button onClick={handleLogout}>Logout</button>
-				<p className='navbar--active__email'>{user.email}</p>
+				<p className='navbar--active__email'>{user.fullname}</p>
 			</div>
 		);
 	} else {
