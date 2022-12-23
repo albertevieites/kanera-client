@@ -1,0 +1,14 @@
+@use '../../styles/abstracts/_fonts' as *;
+@use '../../styles/abstracts/colors' as *;
+
+.profile--edit {
+  padding: 2em;
+
+  button{
+    margin-top: 2em;
+    padding: .7rem;
+    background-color: $clr-terciary;
+
+    color: $clr-background;
+  }
+}
