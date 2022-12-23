@@ -15,7 +15,7 @@ function ProfileEdit() {
 
 	const num = 0;
 
-	const [avatar, setAvatar] = useState('');
+	// const [userPhotoUrl, setUserPhotoUrl] = useState('');
 	const [fullname, setFullname] = useState('');
 	const [email, setEmail] = useState('');
 	const [profession, setProfession] = useState('');
@@ -24,7 +24,7 @@ function ProfileEdit() {
 	const [city, setCity] = useState('');
 	const [country, setCountry] = useState('');
 
-	const handleAvatarChange = (event) => setAvatar(event.target.files[0]);
+	const handlePhotoChange = (event) => setAvatar(event.target.files[0]);
 	const handleFullnameChange = (event) => setFullname(event.target.value);
 	const handleEmailChange = (event) => setEmail(event.target.value);
 	const handleProfessionChange = (event) => setProfession(event.target.value);
@@ -41,7 +41,7 @@ function ProfileEdit() {
 		try {
 			const response = await getProfileService(id);
 			console.log(response.data);
-			setAvatar(response.data.avatar);
+			// setUserPhotoUrl(response.data.userPhotoUrl);
 			setFullname(response.data.fullname);
 			setEmail(response.data.email);
 			setProfession(response.data.profession);
@@ -56,7 +56,7 @@ function ProfileEdit() {
 
 	const handleEdit = async () => {
 		const profileObj = {
-			avatar,
+			// userPhotoUrl,
 			fullname,
 			email,
 			profession,
@@ -79,15 +79,15 @@ function ProfileEdit() {
 			<h3>Update your profile</h3>
 
 			<div className='profile--edit__container'>
-				<div className='profile--edit__avatar'>
+				{/* <div className='profile--edit__avatar'>
 					<label>Upload your photo profile</label>
 					<input
-						type='text'
-						name='avatar'
-						value={avatar}
-						onChange={handleAvatarChange}
+						type='file'
+						name='userPhotoUrl'
+						value={userPhotoUrl}
+						onChange={handlePhotoChange}
 					/>
-				</div>
+				</div> */}
 				<div className='profile--edit__fullname'>
 					<label>Full Name</label>
 					<input

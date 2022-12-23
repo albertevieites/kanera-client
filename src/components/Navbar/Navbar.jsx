@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../context/auth.context';
 
@@ -11,13 +11,18 @@ const Navbar = () => {
 	const { isLoggedIn, user, authenticateUser } = useContext(AuthContext);
 
 	// Logout
-	const handleLogout = () => {
-		// Destroy token
-		localStorage.removeItem('authToken');
-		// Authenticate user
-		authenticateUser();
-		// Redirect
-		/* navigate('/'); */
+	const handleLogout = async (event) => {
+		event.preventDefault();
+		try {
+			// Destroy token
+			await localStorage.removeItem('authToken');
+			// Authenticate user
+			authenticateUser();
+			// Redirect
+			navigate('/');
+		} catch (error) {
+			navigate("/error");
+		}
 	};
 
 	if (isLoggedIn === true) {
@@ -26,20 +31,23 @@ const Navbar = () => {
 				<Link to='/dashboard'>
 					<img src={KaneraLogo} alt='kanera logo' />
 				</Link>
-				<Link to='/income'>
-					<p>Income</p>
-				</Link>
-				<Link to='/expenses'>
-					<p>Expenses</p>
-				</Link>
-				<Link to='/budget'>
-					<p>Budget</p>
-				</Link>
-				<Link to={`/profile/${user._id}`}>
-					<p>Profile</p>
-				</Link>
-				<button onClick={handleLogout}>Logout</button>
-				<p className='navbar--active__email'>{user.fullname}</p>
+				<div className='navbar--active__container'>
+					<div className='navbar--active__sections'>
+						<Link to='/income'>
+							<p>Income</p>
+						</Link>
+						<Link to='/expenses'>
+							<p>Expenses</p>
+						</Link>
+						<Link to='/budget'>
+							<p>Budget</p>
+						</Link>
+					</div>
+					<Link to={`/profile/${user._id}`}>
+						<p className='navbar--active__email'>{user.fullname}</p>
+						<button onClick={handleLogout}>Logout</button>
+					</Link>
+				</div>
 			</div>
 		);
 	} else {
