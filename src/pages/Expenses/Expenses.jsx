@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 // Import Services
 import { getExpensesService, deleteExpenseService } from '../../services/expenses.services';
@@ -67,11 +68,9 @@ const Expenses = () => {
 
 						<tbody>
 							{allExpenses.map((eachExpense) => {
-								const trimmedDate = eachExpense.date.slice(0, 10);
-
 								return (
 									<tr key={eachExpense._id}>
-										<td>{trimmedDate}</td>
+										<td>{moment(eachExpense.date).format("DD-MM-yyyy")}</td>
 										<td>{eachExpense.description}</td>
 										<td>{eachExpense.category}</td>
 										<td>{eachExpense.method}</td>

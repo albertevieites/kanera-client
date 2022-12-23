@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 import { getIncomeService, deleteIncomeService } from '../../services/income.services';
 
@@ -63,11 +64,9 @@ const Income = () => {
 
 						<tbody>
 							{allIncome.map((eachIncome) => {
-								const trimmedDate = eachIncome.date.slice(0, 10);
-
 								return (
 									<tr key={eachIncome._id}>
-										<td>{trimmedDate}</td>
+										<td>{moment(eachIncome.date).format("DD-MM-yyyy")}</td>
 										<td>{eachIncome.type}</td>
 										<td>£{eachIncome.amount}</td>
 										<td>

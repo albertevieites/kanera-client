@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import moment from 'moment';
 
 import {
 	getIncomeDetailsService,
@@ -10,10 +11,10 @@ function IncomeEdit() {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
-	const todayDate = new Date().toISOString().slice(0, 10);
+	const newDate = new Date();
 	const num = 0;
 
-	const [date, setDate] = useState(todayDate);
+	const [date, setDate] = useState(newDate);
 	const [type, setType] = useState('');
 	const [amount, setAmount] = useState(Number(num));
 
@@ -61,7 +62,7 @@ function IncomeEdit() {
 					<input
 						type='date'
 						name='date'
-						value={date}
+						value={moment(date).format("yyyy-MM-DD")}
 						onChange={handleDateChange}
 					/>
 				</div>
