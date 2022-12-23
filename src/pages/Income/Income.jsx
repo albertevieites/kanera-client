@@ -63,9 +63,11 @@ const Income = () => {
 
 						<tbody>
 							{allIncome.map((eachIncome) => {
+								const trimmedDate = eachIncome.date.slice(0, 10);
+
 								return (
 									<tr key={eachIncome._id}>
-										<td>{eachIncome.date}</td>
+										<td>{trimmedDate}</td>
 										<td>{eachIncome.type}</td>
 										<td>£{eachIncome.amount}</td>
 										<td>

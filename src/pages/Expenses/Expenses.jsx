@@ -67,9 +67,11 @@ const Expenses = () => {
 
 						<tbody>
 							{allExpenses.map((eachExpense) => {
+								const trimmedDate = eachExpense.date.slice(0, 10);
+
 								return (
 									<tr key={eachExpense._id}>
-										<td>{eachExpense.date}</td>
+										<td>{trimmedDate}</td>
 										<td>{eachExpense.description}</td>
 										<td>{eachExpense.category}</td>
 										<td>{eachExpense.method}</td>
