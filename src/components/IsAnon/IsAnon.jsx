@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import { AuthContext } from '../../context/auth.context';
+import { AuthContext } from '../../context/AuthContext';
 
 function IsAnon(props) {
 	const { isLoggedIn } = useContext(AuthContext);

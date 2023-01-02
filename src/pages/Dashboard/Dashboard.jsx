@@ -1,4 +1,5 @@
 import React from 'react'
+
 import TodayCard from '../../components/TodayCard/TodayCard'
 
 function Dashboard() {

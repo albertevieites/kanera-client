@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../../context/auth.context';
+import { AuthContext } from '../../context/AuthContext';
 import { loginService } from '../../services/auth.services';
 
 import KaneraLogo from '/kanera.svg';

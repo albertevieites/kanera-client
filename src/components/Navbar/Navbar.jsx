@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../../context/auth.context';
+import { AuthContext } from '../../context/AuthContext';
 
 import KaneraLogo from '/kanera-white.svg';
 
@@ -21,7 +21,7 @@ const Navbar = () => {
 			// Redirect
 			navigate('/');
 		} catch (error) {
-			navigate("/error");
+			navigate('/error');
 		}
 	};
 
