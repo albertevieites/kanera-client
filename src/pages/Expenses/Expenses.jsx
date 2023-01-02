@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import moment from 'moment';
 
 // Import Services
 import { getExpensesService, deleteExpenseService } from '../../services/expenses.services';
 
 // Components
 import ExpenseForm from '../../components/ExpenseForm/ExpenseForm';
+
+// Format dates
+import moment from 'moment';
+
+// Currency Formatter
+import { currencyFormatter } from '../../utils/currency';
 
 const Expenses = () => {
 	const navigate = useNavigate();
@@ -74,7 +79,7 @@ const Expenses = () => {
 										<td>{eachExpense.description}</td>
 										<td>{eachExpense.category}</td>
 										<td>{eachExpense.method}</td>
-										<td>£{eachExpense.amount}</td>
+										<td>{currencyFormatter.format(eachExpense.amount)}</td>
 										<td>
 											<button onClick={() => handleDelete(eachExpense._id)}>Delete</button>
 											<Link to={`/expenses/edit/${eachExpense._id}`}>
@@ -89,7 +94,7 @@ const Expenses = () => {
 				</div>
 
 				<div className='expenses__total'>
-					<h1>£{sum}</h1>
+					<h1>{currencyFormatter.format(sum)}</h1>
 				</div>
 			</div>
 		</div>

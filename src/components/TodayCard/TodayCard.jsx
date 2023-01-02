@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { getExpensesService } from '../../services/expenses.services';
 
+import { currencyFormatter } from '../../utils/currency';
+
 function TodayCard() {
 	// Hooks
 	const navigate = useNavigate();
@@ -73,7 +75,7 @@ function TodayCard() {
 				})}
 			</div>
 			<div className='today__spent'>
-				<h4>You've spent <span>£{sum}</span> today</h4>
+				<h4>You've spent <span>{currencyFormatter.format(sum)}</span> today</h4>
 			</div>
 		</div>
 	);

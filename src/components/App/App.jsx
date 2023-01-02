@@ -20,6 +20,8 @@ import ProfileEdit from '../../pages/Profile/ProfileEdit';
 import IsAnon from '../IsAnon/IsAnon';
 import IsPrivate from '../IsPrivate/IsPrivate';
 
+import { ExpenseWrapper } from '../../context/ExpenseContext';
+
 function App() {
 	const { pathname } = useLocation();
 
@@ -29,111 +31,112 @@ function App() {
 				{/* <Navbar /> */}
 				{pathname !== '/login' && pathname !== '/signup' && <Navbar />}
 
-				<Routes>
-					{/* Initial page */}
-					<Route
-						path='/'
-						element={
-							<IsAnon>
-								<Home />
-							</IsAnon>
-						}
-					/>
-					<Route
-						path='/signup'
-						element={
-							<IsAnon>
-								<Signup />
-							</IsAnon>
-						}
-					/>
-					<Route
-						path='/login'
-						element={
-							<IsAnon>
-								<Login />
-							</IsAnon>
-						}
-					/>
+				<ExpenseWrapper>
+					<Routes>
+						{/* Initial page */}
+						<Route
+							path='/'
+							element={
+								<IsAnon>
+									<Home />
+								</IsAnon>
+							}
+						/>
+						<Route
+							path='/signup'
+							element={
+								<IsAnon>
+									<Signup />
+								</IsAnon>
+							}
+						/>
+						<Route
+							path='/login'
+							element={
+								<IsAnon>
+									<Login />
+								</IsAnon>
+							}
+						/>
+						{/* Logged page */}
+						<Route
+							path='/dashboard'
+							element={
+								<IsPrivate>
+									<Dashboard />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/income'
+							element={
+								<IsPrivate>
+									<Income />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/income/edit/:id'
+							element={
+								<IsPrivate>
+									<IncomeEdit />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/expenses'
+							element={
+								<IsPrivate>
+									<Expenses />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/expenses/:id'
+							element={
+								<IsPrivate>
+									<ExpensesDetails />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/expenses/edit/:id'
+							element={
+								<IsPrivate>
+									<ExpensesEdit />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/budget'
+							element={
+								<IsPrivate>
+									<Budget />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/profile/:id'
+							element={
+								<IsPrivate>
+									<Profile />
+								</IsPrivate>
+							}
+						/>
+						<Route
+							path='/profile/edit/:id'
+							element={
+								<IsPrivate>
+									<ProfileEdit />
+								</IsPrivate>
+							}
+						/>
 
-					{/* Logged page */}
-					<Route
-						path='/dashboard'
-						element={
-							<IsPrivate>
-								<Dashboard />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/income'
-						element={
-							<IsPrivate>
-								<Income />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/income/edit/:id'
-						element={
-							<IsPrivate>
-								<IncomeEdit />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/expenses'
-						element={
-							<IsPrivate>
-								<Expenses />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/expenses/:id'
-						element={
-							<IsPrivate>
-								<ExpensesDetails />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/expenses/edit/:id'
-						element={
-							<IsPrivate>
-								<ExpensesEdit />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/budget'
-						element={
-							<IsPrivate>
-								<Budget />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/profile/:id'
-						element={
-							<IsPrivate>
-								<Profile />
-							</IsPrivate>
-						}
-					/>
-					<Route
-						path='/profile/edit/:id'
-						element={
-							<IsPrivate>
-								<ProfileEdit />
-							</IsPrivate>
-						}
-					/>
-
-					{/* Components for error handling */}
-					<Route path='/error' element={<Error />} />
-					<Route path='/*' element={<NotFound />} />
-				</Routes>
+						{/* Components for error handling */}
+						<Route path='/error' element={<Error />} />
+						<Route path='/*' element={<NotFound />} />
+					</Routes>
+				</ExpenseWrapper>
 			</div>
 		</Layout>
 	);

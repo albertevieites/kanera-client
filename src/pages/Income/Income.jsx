@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import moment from 'moment';
 
 import { getIncomeService, deleteIncomeService } from '../../services/income.services';
+
+import { currencyFormatter } from '../../utils/currency';
 
 import IncomeForm from '../../components/IncomeForm/IncomeForm';
 
@@ -68,7 +71,7 @@ const Income = () => {
 									<tr key={eachIncome._id}>
 										<td>{moment(eachIncome.date).format("DD-MM-yyyy")}</td>
 										<td>{eachIncome.type}</td>
-										<td>£{eachIncome.amount}</td>
+										<td>{currencyFormatter.format(eachIncome.amount)}</td>
 										<td>
 											<button onClick={() => handleDelete(eachIncome._id)}>Delete</button>
 											<Link to={`/income/edit/${eachIncome._id}`}>
@@ -82,7 +85,7 @@ const Income = () => {
 					</table>
 				</div>
 				<div className='income__total'>
-					<h1>£{sum}</h1>
+					<h1>{currencyFormatter.format(sum)}</h1>
 				</div>
 			</div>
 		</div>

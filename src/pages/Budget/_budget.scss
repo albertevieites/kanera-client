@@ -1,3 +1,38 @@
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
+
 .budget {
-  
+  width: 100%;
+	padding: 2em;
+
+	h1 {
+		margin-bottom: 1em;
+	}
+
+	&__total {
+		display: flex;
+    flex-direction: column;
+		gap: 1em;
+
+    width: 100%;
+
+		font-size: $f-s-500;
+
+		& > div {
+      padding: 1em;
+			background-color: $clr-terciary;
+
+      color: $clr-background;
+		}
+
+		&--target {
+			display: flex;
+			justify-content: space-between;
+
+			button {
+				background-color: $clr-background;
+				color: $clr-typo;
+			}
+		}
+	}
 }
