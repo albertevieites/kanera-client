@@ -5,6 +5,7 @@ import {
 	getProfileService,
 	updateProfileService,
 } from '../../services/profile.services';
+import { uploadService } from '../../services/upload.services';
 
 import arrCountry from '../../utils/country';
 import arrGender from '../../utils/gender';
@@ -15,7 +16,6 @@ function ProfileEdit() {
 
 	const num = 0;
 
-	// const [userPhotoUrl, setUserPhotoUrl] = useState('');
 	const [fullname, setFullname] = useState('');
 	const [email, setEmail] = useState('');
 	const [profession, setProfession] = useState('');
@@ -24,7 +24,9 @@ function ProfileEdit() {
 	const [city, setCity] = useState('');
 	const [country, setCountry] = useState('');
 
-	const handlePhotoChange = (event) => setAvatar(event.target.files[0]);
+	// state to save URL from Cloudinary
+	const [imageUrl, setImageUrl] = useState('');
+
 	const handleFullnameChange = (event) => setFullname(event.target.value);
 	const handleEmailChange = (event) => setEmail(event.target.value);
 	const handleProfessionChange = (event) => setProfession(event.target.value);
@@ -40,8 +42,8 @@ function ProfileEdit() {
 	const getProfileDetails = async () => {
 		try {
 			const response = await getProfileService(id);
-			console.log(response.data);
-			// setUserPhotoUrl(response.data.userPhotoUrl);
+
+			setImageUrl(response.data.image);
 			setFullname(response.data.fullname);
 			setEmail(response.data.email);
 			setProfession(response.data.profession);
@@ -64,6 +66,7 @@ function ProfileEdit() {
 			gender,
 			city,
 			country,
+			image: imageUrl
 		};
 
 		try {
@@ -74,20 +77,31 @@ function ProfileEdit() {
 		}
 	};
 
+	const handleImgUpload = async (event) => {
+		console.log(event.target.files[0]);
+		// Send image to Cloudinary by Backend
+		// Get URL and update state
+		const form = new FormData();
+		form.append("image", event.target.files[0])
+		// "image" has to be the same name as the name of upload.single of the backend
+		try {
+			const response = await uploadService(form);
+			setImageUrl(response.data.imageUrl);
+		} catch (error) {
+			navigate('/error');
+		}
+	};
+
 	return (
 		<div className='profile--edit'>
 			<h3>Update your profile</h3>
 
+			<div className='profile--edit__uploader'>
+				<h5>Add an image</h5>
+				<input type='file' onChange={handleImgUpload} />
+				<img src={imageUrl} alt='image' />
+			</div>
 			<div className='profile--edit__container'>
-				{/* <div className='profile--edit__avatar'>
-					<label>Upload your photo profile</label>
-					<input
-						type='file'
-						name='userPhotoUrl'
-						value={userPhotoUrl}
-						onChange={handlePhotoChange}
-					/>
-				</div> */}
 				<div className='profile--edit__fullname'>
 					<label>Full Name</label>
 					<input

@@ -16,7 +16,7 @@ function TodayCard() {
 		getExpenses();
 	}, []);
 
-	// Axios
+	// Get all expenses
 	const getExpenses = async () => {
 		try {
 			const response = await getExpensesService();
