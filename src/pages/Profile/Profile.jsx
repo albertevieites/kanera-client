@@ -37,7 +37,7 @@ const Profile = () => {
 		gender,
 		city,
 		country,
-		userPhotoUrl,
+		image,
 		_id
 	} = singleProfile;
 
@@ -47,7 +47,7 @@ const Profile = () => {
 
 			<div className='profile__container'>
 				<div className='profile__user'>
-					<img src={userPhotoUrl} alt='photo user' />
+					<img src={image} alt='photo user' />
 					<h2>{fullname}</h2>
 					<p>{email}</p>
 					<Link to={`/profile/edit/${_id}`}>

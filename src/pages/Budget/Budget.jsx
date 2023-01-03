@@ -7,8 +7,23 @@ import BudgetCard from '../../components/BudgetCard/BudgetCard';
 const Budget = () => {
 	const { expense } = useExpense();
 
-  // Sum
-  const totalExpense = expense.reduce((prev, curr) => prev + curr.amount, 0);
+	// TODO: Filter expense by current month
+	const filteredExpense = expense.filter((element) => {
+  // Current Date
+  const currentDate = new Date().toJSON();
+  const slicedCurrentDate = currentDate.slice(0, 7);
+
+  const slicedElement = element.date.slice(0,7);
+
+  if (slicedElement === slicedCurrentDate) {
+    return element;
+  }
+  return false;
+});
+
+	// Sum all the expenses in the current month
+	const totalExpense = filteredExpense.reduce((prev, curr) => prev + curr.amount, 0);
+
 	return (
 		<div className='budget'>
 			<h1>Budget</h1>
@@ -16,7 +31,7 @@ const Budget = () => {
 			<div className='budget__total'>
 				<div className='budget__total--target'>
 					<span>Budget: £2000</span>
-          <button>Edit</button>
+					<button>Edit</button>
 				</div>
 				<div className='budget__total--remaining'>
 					<span>Remaining: £1000</span>
