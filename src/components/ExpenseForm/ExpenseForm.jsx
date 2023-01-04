@@ -15,8 +15,8 @@ const ExpenseForm = (props) => {
 	// useState for input fields
 	const [date, setDate] = useState(todayDate);
 	const [description, setDescription] = useState('');
-	const [category, setCategory] = useState('');
-	const [method, setMethod] = useState('');
+	const [category, setCategory] = useState('General');
+	const [method, setMethod] = useState('Card');
 	const [amount, setAmount] = useState(Number(num));
 
 	// Handle change events

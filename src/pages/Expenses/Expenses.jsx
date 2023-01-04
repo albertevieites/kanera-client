@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 // Import Services
-import { getExpensesService, deleteExpenseService } from '../../services/expenses.services';
+import {
+	deleteExpenseService,
+	getExpensesService,
+} from '../../services/expenses.services';
 
 // Components
 import ExpenseForm from '../../components/ExpenseForm/ExpenseForm';
@@ -26,8 +29,8 @@ const Expenses = () => {
 	const getExpenses = async () => {
 		try {
 			const response = await getExpensesService();
-			console.log(response.data);
 			setAllExpenses(response.data);
+			console.log(response.data);
 			setIsFetching(false);
 		} catch (err) {
 			navigate('/error');
@@ -44,12 +47,12 @@ const Expenses = () => {
 		}
 	};
 
+	// Sum
+	const sum = allExpenses.reduce((prev, curr) => prev + curr.amount, 0);
+
 	if (isFetching === true) {
 		return <h3>... is Loading</h3>;
 	}
-
-	// Sum
-	const sum = allExpenses.reduce((prev, curr) => prev + curr.amount, 0);
 
 	return (
 		<div className='expenses'>
@@ -75,13 +78,15 @@ const Expenses = () => {
 							{allExpenses.map((eachExpense) => {
 								return (
 									<tr key={eachExpense._id}>
-										<td>{moment(eachExpense.date).format("DD-MM-yyyy")}</td>
+										<td>{moment(eachExpense.date).format('DD-MM-yyyy')}</td>
 										<td>{eachExpense.description}</td>
 										<td>{eachExpense.category}</td>
 										<td>{eachExpense.method}</td>
 										<td>{currencyFormatter.format(eachExpense.amount)}</td>
 										<td>
-											<button onClick={() => handleDelete(eachExpense._id)}>Delete</button>
+											<button onClick={() => handleDelete(eachExpense._id)}>
+												Delete
+											</button>
 											<Link to={`/expenses/edit/${eachExpense._id}`}>
 												<button>Edit</button>
 											</Link>
