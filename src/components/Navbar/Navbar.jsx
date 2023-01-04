@@ -25,6 +25,7 @@ const Navbar = () => {
 		}
 	};
 
+	// RENDER
 	if (isLoggedIn === true) {
 		return (
 			<div className='navbar--active'>
@@ -43,10 +44,13 @@ const Navbar = () => {
 							<p>Budget</p>
 						</Link>
 					</div>
-					<Link to={`/profile/${user._id}`}>
-						<p className='navbar--active__email'>{user.fullname}</p>
-						<button onClick={handleLogout}>Logout</button>
-					</Link>
+					<div className="navbar--active__profile">
+						<Link to={`/profile/${user._id}`}>
+							<img src={user.image} alt="user avatar" />
+							<p className='navbar--active__name'>{user.fullname}</p>
+						</Link>
+							<button onClick={handleLogout}>Logout</button>
+					</div>
 				</div>
 			</div>
 		);

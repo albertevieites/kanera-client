@@ -51,7 +51,7 @@
 
 	a {
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		gap: 0.7em;
 
 		margin-bottom: 0.7em;
@@ -68,17 +68,15 @@
 	&__container {
 		display: flex;
 		flex-direction: column;
-    justify-content: space-between;
+		justify-content: space-between;
 
-    height: 90vh;
+		height: 90vh;
 	}
 
-	&__email {
-		margin: 2em 0;
-		padding: 1em 1em;
-		background-color: $clr-background;
-
-		text-align: center;
-		color: $clr-secondary;
+	&__profile {
+		img {
+			width: 3em;
+			border-radius: 50%;
+		}
 	}
 }

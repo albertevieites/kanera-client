@@ -1,28 +1,63 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { useExpense } from '../../context/ExpenseContext';
+import { getBudgetService } from '../../services/budget.services';
 
 import { currencyFormatter } from '../../utils/currency';
 
-import BudgetCard from '../../components/BudgetCard/BudgetCard';
+import CategoryBudget from '../../components/CategoryBudget/CategoryBudget';
 
 const Budget = () => {
-	const { expense } = useExpense();
+	const { expense, getExpense } = useExpense();
 
-	// TODO: Filter expense by current month
+	const navigate = useNavigate();
+
+	const [budget, setBudget] = useState([]);
+	const [isFetching, setIsFetching] = useState(true);
+
+	useEffect(() => {
+		getBudget();
+		getExpense();
+	}, []);
+
+	const getBudget = async () => {
+		try {
+			const response = await getBudgetService();
+			setBudget(response.data);
+			setIsFetching(false);
+		} catch (err) {
+			navigate('/error');
+		}
+	};
+
+	// * Filter expense by current month
 	const filteredExpense = expense.filter((element) => {
-  // Current Date
-  const currentDate = new Date().toJSON();
-  const slicedCurrentDate = currentDate.slice(0, 7);
+		// Current Date
+		const currentDate = new Date().toJSON();
+		const slicedCurrentDate = currentDate.slice(0, 7);
 
-  const slicedElement = element.date.slice(0,7);
+		// Date from database
+		const slicedElement = element.date.slice(0, 7);
 
-  if (slicedElement === slicedCurrentDate) {
-    return element;
-  }
-  return false;
-});
+		if (slicedElement === slicedCurrentDate) {
+			return element;
+		}
+		return false;
+	});
+
+	if (isFetching === true) {
+		return <h3>... is Loading</h3>;
+	}
 
 	// Sum all the expenses in the current month
-	const totalExpense = filteredExpense.reduce((prev, curr) => prev + curr.amount, 0);
+	const sumExpense = filteredExpense.reduce(
+		(prev, curr) => prev + curr.amount,
+		0
+	);
+
+	// Remaining
+	const remaining = budget[0].amount-sumExpense;
 
 	return (
 		<div className='budget'>
@@ -30,17 +65,25 @@ const Budget = () => {
 			<div className='budget__graphic'></div>
 			<div className='budget__total'>
 				<div className='budget__total--target'>
-					<span>Budget: £2000</span>
+					{budget.map((eachBudget) => {
+						return (
+							<span key={eachBudget._id}>
+								Budget: {currencyFormatter.format(eachBudget.amount)}
+							</span>
+						);
+					})}
 					<button>Edit</button>
 				</div>
 				<div className='budget__total--remaining'>
-					<span>Remaining: £1000</span>
+					<span>Remaining: {currencyFormatter.format(remaining)}</span>
 				</div>
 				<div className='budget__total--spent'>
-					<span>Spent so far: {currencyFormatter.format(totalExpense)}</span>
+					<span>Spent so far: {currencyFormatter.format(sumExpense)}</span>
 				</div>
 			</div>
-			<BudgetCard name='Entertaiment' amount={200} max={1000}></BudgetCard>
+
+			<CategoryBudget />
+
 		</div>
 	);
 };
