@@ -46,15 +46,13 @@ const Budget = () => {
 		return false;
 	});
 
+	// Fetching
 	if (isFetching === true) {
 		return <h3>... is Loading</h3>;
 	}
 
 	// Sum all the expenses in the current month
-	const sumExpense = filteredExpense.reduce(
-		(prev, curr) => prev + curr.amount,
-		0
-	);
+	const sumExpense = filteredExpense.reduce((prev, curr) => prev + curr.amount, 0);
 
 	// Remaining
 	const remaining = budget[0].amount-sumExpense;

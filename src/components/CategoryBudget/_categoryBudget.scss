@@ -2,9 +2,15 @@
 @use '../../styles/abstracts/fonts' as *;
 
 .category--budget {
-  margin-top: 2em;
-  padding: 1rem;
-  background-color: $clr-secondary;
+	display: flex;
+	gap: 2em;
 
-  color: $clr-background;
+	margin-top: 2em;
+
+	& > div {
+		padding: 2em;
+		background-color: $clr-secondary;
+
+		color: $clr-background;
+	}
 }
