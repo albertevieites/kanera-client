@@ -1,16 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { useExpense } from '../../context/ExpenseContext';
 
-import arrCategory from '../../utils/category';
-
 function CategoryBudget() {
-	const navigate = useNavigate();
-
 	const { expense, getExpense } = useExpense();
-
-	const [isFetching, setIsFetching] = useState(true);
 
 	useEffect(() => {
 		getExpense();
@@ -26,47 +19,30 @@ function CategoryBudget() {
 		const slicedElement = element.date.slice(0, 7);
 
 		if (slicedElement === slicedCurrentDate) {
-      //console.log(element)
+			//console.log(element)
 			return element;
 		}
 		return false;
 	});
 
-	//console.log(filteredExpense);
-
-  const filteredCategory = filteredExpense.filter((element)=> {
-    // Category data
-    const categoryElement = element.category;
-    console.log(categoryElement);
-    const categories = arrCategory;
-    console.log(categories);
-
-    if(categoryElement === categories){
-      console.log(element);
-      return element;
-    }
-    return false;
-  })
+	// * Filter expense by category
+	const filteredCategory = filteredExpense.filter((element) => {
+		if (element.category) {
+			console.log(element);
+			return element;
+		}
+		return false;
+	});
 
 	// Sum all the expenses in the current month
-	/* const sumExpense = filteredExpense.reduce(
+	const sumExpense = filteredCategory.reduce(
 		(prev, curr) => prev + curr.amount,
 		0
-	); */
+	);
 
 	return (
 		<div className='category--budget'>
-			{/* <div>{sumExpense}</div> */}
-			{filteredExpense.map((expense) => {
-				return (
-					<div>
-						<div key={expense.id}>
-							{expense.category} :: {expense.amount}
-						</div>
-					</div>
-				);
-			})}
-
+			<div className='category--budget--groceries'>Groceries Spent: {sumExpense}</div>
 		</div>
 	);
 }

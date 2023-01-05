@@ -1,48 +1,43 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { getExpensesService } from '../../services/expenses.services';
+import { useEffect } from 'react';
+import { useExpense } from '../../context/ExpenseContext';
 
 import { currencyFormatter } from '../../utils/currency';
 
 function TodayCard() {
-	// Hooks
-	const navigate = useNavigate();
-
-	const [allExpenses, setAllExpenses] = useState([]);
-	const [isFetching, setIsFetching] = useState(true);
+	// Context
+	const { expense, getExpense } = useExpense();
 
 	useEffect(() => {
-		getExpenses();
+		getExpense();
 	}, []);
 
-	// Get all expenses
-	const getExpenses = async () => {
-		try {
-			const response = await getExpensesService();
-			console.log(response.data);
-			setAllExpenses(response.data);
-			setIsFetching(false);
-		} catch (error) {
-			// ... redirection
-			navigate('/error');
-		}
-	};
+	 // * Filter expense by current day
+	const filteredExpense = expense.filter((element) => {
+		// Current Date
+		const currentDate = new Date().toJSON();
+		const slicedCurrentDate = currentDate.slice(0, 10);
 
-	// Fetching
-	if (isFetching === true) {
-		return <h3>... is Loading</h3>;
-	}
+		// Date from database
+		const slicedElement = element.date.slice(0, 10);
+
+		if (slicedElement === slicedCurrentDate) {
+			console.log(element);
+			return element;
+		}
+		return false;
+	});
 
 	// GetDate
 	const current = new Date();
+	const currentDate = current.toJSON();
+	console.log(currentDate);
 	const day = current.getDate();
 	const weekDay = current.toLocaleDateString('default', { weekday: 'long' });
 	const month = current.toLocaleDateString('default', { month: 'short' });
 	const year = current.getFullYear();
 
 	// Sum
-	const sum = allExpenses.reduce((prev, curr) => prev + curr.amount, 0)
+	const sum = filteredExpense.reduce((prev, curr) => prev + curr.amount, 0);
 
 	return (
 		<div className='today'>
@@ -59,7 +54,7 @@ function TodayCard() {
 			</div>
 
 			<div className='today__expenses'>
-				{allExpenses.map(eachExpense => {
+				{filteredExpense.map(eachExpense => {
 					return (
 						<div className='today__details' key={eachExpense._id}>
 							<div className='today__concept'>
@@ -68,7 +63,7 @@ function TodayCard() {
 								<p>{eachExpense.test}</p>
 							</div>
 							<div className='today__amount'>
-								<p>- £{eachExpense.amount}</p>
+								<p>- {currencyFormatter.format(eachExpense.amount)}</p>
 							</div>
 						</div>
 					);
