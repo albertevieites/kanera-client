@@ -1,14 +1,19 @@
-@use "../../styles/abstracts/colors" as *;
-@use "../../styles/abstracts/fonts" as *;
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
 
 .dashboard {
-  width: 100%;
+	width: 100%;
 
-  &>h2 {
-    margin-left: 2rem;
-    margin-top: 2rem;
+	& > h2 {
+		margin-left: 2rem;
+		margin-top: 2rem;
 
-    font-weight: $f-w-700;
-    color: $clr-grey;
-  }
+		font-weight: $f-w-700;
+		color: $clr-grey;
+	}
+
+	&__top {
+		display: flex;
+		gap: 5em;
+	}
 }

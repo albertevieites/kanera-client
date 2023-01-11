@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function BalanceCard() {
-  return (
-    <div>BalanceCard</div>
-  )
+	return <div>BalanceCard</div>;
 }
 
-export default BalanceCard
+export default BalanceCard;

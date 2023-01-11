@@ -66,7 +66,7 @@ function ProfileEdit() {
 			gender,
 			city,
 			country,
-			image: imageUrl
+			image: imageUrl,
 		};
 
 		try {
@@ -82,7 +82,7 @@ function ProfileEdit() {
 		// Send image to Cloudinary by Backend
 		// Get URL and update state
 		const form = new FormData();
-		form.append("image", event.target.files[0])
+		form.append('image', event.target.files[0]);
 		// "image" has to be the same name as the name of upload.single of the backend
 		try {
 			const response = await uploadService(form);

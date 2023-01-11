@@ -63,7 +63,7 @@ function IncomeEdit() {
 					<input
 						type='date'
 						name='date'
-						value={moment(date).format("yyyy-MM-DD")}
+						value={moment(date).format('yyyy-MM-DD')}
 						onChange={handleDateChange}
 					/>
 				</div>

@@ -53,8 +53,6 @@
 		display: flex;
 		align-items: center;
 		gap: 0.7em;
-
-		margin-bottom: 0.7em;
 	}
 
 	button {
@@ -74,9 +72,17 @@
 	}
 
 	&__profile {
-		img {
-			width: 3em;
-			border-radius: 50%;
-		}
+		display: flex;
+		align-items: center;
+	}
+
+	&__avatar {
+		width: 3.5em;
+		border-radius: 50%;
+	}
+
+	&__dots {
+		width: 1.3rem;
+		margin-left: .5rem;
 	}
 }

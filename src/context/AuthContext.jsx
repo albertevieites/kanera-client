@@ -37,7 +37,7 @@ function AuthWrapper(props) {
 		user,
 		authenticateUser,
 		setIsLoggedIn,
-    setUser,
+		setUser,
 	};
 
 	if (isFetching === true) {

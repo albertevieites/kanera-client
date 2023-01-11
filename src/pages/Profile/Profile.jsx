@@ -38,7 +38,7 @@ const Profile = () => {
 		city,
 		country,
 		image,
-		_id
+		_id,
 	} = singleProfile;
 
 	return (

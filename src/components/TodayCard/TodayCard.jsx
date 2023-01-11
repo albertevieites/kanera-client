@@ -11,7 +11,7 @@ function TodayCard() {
 		getExpense();
 	}, []);
 
-	 // * Filter expense by current day
+	// * Filter expense by current day
 	const filteredExpense = expense.filter((element) => {
 		// Current Date
 		const currentDate = new Date().toJSON();
@@ -21,7 +21,6 @@ function TodayCard() {
 		const slicedElement = element.date.slice(0, 10);
 
 		if (slicedElement === slicedCurrentDate) {
-			console.log(element);
 			return element;
 		}
 		return false;
@@ -30,7 +29,6 @@ function TodayCard() {
 	// GetDate
 	const current = new Date();
 	const currentDate = current.toJSON();
-	console.log(currentDate);
 	const day = current.getDate();
 	const weekDay = current.toLocaleDateString('default', { weekday: 'long' });
 	const month = current.toLocaleDateString('default', { month: 'short' });
@@ -54,7 +52,7 @@ function TodayCard() {
 			</div>
 
 			<div className='today__expenses'>
-				{filteredExpense.map(eachExpense => {
+				{filteredExpense.map((eachExpense) => {
 					return (
 						<div className='today__details' key={eachExpense._id}>
 							<div className='today__concept'>
@@ -70,7 +68,9 @@ function TodayCard() {
 				})}
 			</div>
 			<div className='today__spent'>
-				<h4>You've spent <span>{currencyFormatter.format(sum)}</span> today</h4>
+				<h4>
+					You've spent <span>{currencyFormatter.format(sum)}</span> today
+				</h4>
 			</div>
 		</div>
 	);

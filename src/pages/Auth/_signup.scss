@@ -1,5 +1,5 @@
-@use "../../styles/abstracts/colors" as *;
-@use "../../styles/abstracts/fonts" as *;
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
 
 .signup {
 	display: flex;
@@ -29,7 +29,7 @@
 		}
 
 		label {
-			margin-bottom: .7em;
+			margin-bottom: 0.7em;
 
 			font-weight: $f-w-600;
 		}
@@ -37,7 +37,7 @@
 		input {
 			width: 100%;
 			padding: 1em;
-			border-radius: .5rem;
+			border-radius: 0.5rem;
 
 			font-size: $f-s-380;
 
@@ -46,7 +46,7 @@
 	}
 
 	button {
-		padding: .5em 0;
+		padding: 0.5em 0;
 		background-color: $clr-terciary;
 		border-radius: 2rem;
 

@@ -1,47 +1,60 @@
-@use "../../styles/abstracts/colors" as *;
-@use "../../styles/abstracts/fonts" as *;
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
 
 .today {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  width: 30vw;
-  margin-top: 2em;
-  margin-left: 2em;
-  padding: 2em;
-  background-color: $clr-secondary;
-  border-radius: 1.25rem;
+	width: 30vw;
+	margin-top: 2em;
+	margin-left: 2em;
+	padding: 2em;
+	background-color: $clr-secondary;
+	border-radius: 1.25rem;
 
-  color: $clr-background;
+	color: $clr-background;
 
-  &__title {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+	&__title {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
 
-    padding-bottom: .7rem;
-    border-bottom: .03rem solid $clr-background;
-  }
+		padding-bottom: 0.7rem;
+		border-bottom: 0.03rem solid $clr-background;
 
-  &__date {
-    display: flex;
-    align-items: center;
-    gap: .7em;
-  }
+		h1 {
+			font-size: $f-s-1400;
+		}
 
-  &__expenses {
-    padding: 2em 0;
-  }
+		h2 {
+			bottom: 0;
+			left: 0;
 
-  &__details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+			font-size: $f-s-1000;
+			font-weight: $f-w-100;
+		}
+	}
 
-  &__spent {
-    h4 {
-      text-align: center;
-    }
-  }
+	&__date {
+		display: flex;
+
+		align-items: center;
+		gap: 0.7em;
+	}
+
+	&__expenses {
+		padding: 2em 0;
+	}
+
+	&__details {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__spent {
+		h4 {
+			text-align: center;
+		}
+	}
 }

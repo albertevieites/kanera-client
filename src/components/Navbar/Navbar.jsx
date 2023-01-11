@@ -1,29 +1,16 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../context/AuthContext';
+import DropDownProfile from '../DropdownProfile/DropdownProfile';
 
+import DotsIcon from '/icons/dots-vertical.svg';
 import KaneraLogo from '/kanera-white.svg';
 
 const Navbar = () => {
-	// const navigate = useNavigate();
+	const [openProfile, setOpenProfile] = useState(false);
 
-	const { isLoggedIn, user, authenticateUser } = useContext(AuthContext);
-
-	// Logout
-	const handleLogout = async (event) => {
-		event.preventDefault();
-		try {
-			// Destroy token
-			await localStorage.removeItem('authToken');
-			// Authenticate user
-			authenticateUser();
-			// Redirect
-			navigate('/');
-		} catch (error) {
-			navigate('/error');
-		}
-	};
+	const { isLoggedIn, user } = useContext(AuthContext);
 
 	// RENDER
 	if (isLoggedIn === true) {
@@ -44,12 +31,15 @@ const Navbar = () => {
 							<p>Budget</p>
 						</Link>
 					</div>
-					<div className="navbar--active__profile">
+					<div className='navbar--active__profile'>
 						<Link to={`/profile/${user._id}`}>
-							<img src={user.image} alt="user avatar" />
+							<img src={user.image} alt='user avatar' className='navbar--active__avatar' />
 							<p className='navbar--active__name'>{user.fullname}</p>
 						</Link>
-							<button onClick={handleLogout}>Logout</button>
+						<img src={DotsIcon} alt='dots icon' className='navbar--active__dots' onClick={()=> setOpenProfile((prev) => !prev)}></img>
+						{
+							openProfile && <DropDownProfile />
+						}
 					</div>
 				</div>
 			</div>

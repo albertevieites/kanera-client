@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
 
-import { getExpenseDetailsService, updateExpenseService } from '../../services/expenses.services';
+import {
+	getExpenseDetailsService,
+	updateExpenseService,
+} from '../../services/expenses.services';
 
 const ExpensesEdit = () => {
 	// id
@@ -47,23 +50,22 @@ const ExpensesEdit = () => {
 		}
 	};
 
-	const handleEdit = async ()=> {
+	const handleEdit = async () => {
 		const expenseObj = {
 			date,
 			description,
 			category,
 			method,
-			amount
-		}
+			amount,
+		};
 
 		try {
 			await updateExpenseService(id, expenseObj);
 			navigate('/expenses');
 		} catch (error) {
-			navigate("/error")
+			navigate('/error');
 		}
-	}
-
+	};
 
 	return (
 		<div className='expenses--edit'>

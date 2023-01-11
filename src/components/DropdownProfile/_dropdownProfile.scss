@@ -1,0 +1,23 @@
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
+
+.dropdown {
+  position: absolute;
+  bottom: 6rem;
+  left: 6.7rem;
+
+
+  padding: .4rem 1.2rem;
+  border-radius: .3rem;
+  background-color: $clr-background;
+
+  color: $clr-typo;
+
+  &__list {
+    padding: 0;
+  }
+
+  &__logout {
+    cursor: pointer;
+  }
+}

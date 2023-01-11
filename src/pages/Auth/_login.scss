@@ -1,5 +1,5 @@
-@use "../../styles/abstracts/colors" as *;
-@use "../../styles/abstracts/fonts" as *;
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
 
 .login {
 	display: flex;
@@ -16,7 +16,7 @@
 
 	form {
 		display: flex;
-    flex-direction: column;
+		flex-direction: column;
 		gap: 2em;
 
 		width: 30vw;
@@ -29,7 +29,7 @@
 		}
 
 		label {
-			margin-bottom: .7em;
+			margin-bottom: 0.7em;
 
 			font-weight: $f-w-600;
 		}
@@ -37,7 +37,7 @@
 		input {
 			width: 100%;
 			padding: 1em;
-			border-radius: .5rem;
+			border-radius: 0.5rem;
 
 			font-size: $f-s-380;
 
@@ -46,7 +46,7 @@
 	}
 
 	button {
-		padding: .5em 0;
+		padding: 0.5em 0;
 		background-color: $clr-terciary;
 		border-radius: 2rem;
 
@@ -71,16 +71,15 @@
 	}
 
 	&__error {
-    width: 20em;
-    margin: 0 auto;
-    padding: 1em 0;
+		width: 20em;
+		margin: 0 auto;
+		padding: 1em 0;
 		background-color: $clr-danger;
 		border-radius: 2rem;
 
 		font-size: $f-s-440;
 		font-weight: $f-w-600;
 		color: $clr-background;
-    text-align: center;
-
-  }
+		text-align: center;
+	}
 }

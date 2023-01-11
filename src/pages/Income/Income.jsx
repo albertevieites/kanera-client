@@ -3,7 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import moment from 'moment';
 
-import { getIncomeService, deleteIncomeService } from '../../services/income.services';
+import {
+	getIncomeService,
+	deleteIncomeService,
+} from '../../services/income.services';
 
 import { currencyFormatter } from '../../utils/currency';
 
@@ -69,11 +72,13 @@ const Income = () => {
 							{allIncome.map((eachIncome) => {
 								return (
 									<tr key={eachIncome._id}>
-										<td>{moment(eachIncome.date).format("DD-MM-yyyy")}</td>
+										<td>{moment(eachIncome.date).format('DD-MM-yyyy')}</td>
 										<td>{eachIncome.type}</td>
 										<td>{currencyFormatter.format(eachIncome.amount)}</td>
 										<td>
-											<button onClick={() => handleDelete(eachIncome._id)}>Delete</button>
+											<button onClick={() => handleDelete(eachIncome._id)}>
+												Delete
+											</button>
 											<Link to={`/income/edit/${eachIncome._id}`}>
 												<button>Edit</button>
 											</Link>

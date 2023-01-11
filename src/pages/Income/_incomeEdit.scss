@@ -1,18 +1,18 @@
 .income--edit {
-  width: 100%;
-  padding: 1em 2em;
+	width: 100%;
+	padding: 1em 2em;
 
-  h3 {
-    padding-bottom: 1em;
-  }
+	h3 {
+		padding-bottom: 1em;
+	}
 
-  button {
-    margin-top: 1em;
-    border: 1px solid black;
-  }
+	button {
+		margin-top: 1em;
+		border: 1px solid black;
+	}
 
-  &__container { 
-    display: flex;
-    gap: 2em;
-  }
+	&__container {
+		display: flex;
+		gap: 2em;
+	}
 }

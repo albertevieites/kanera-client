@@ -1,50 +1,50 @@
-@use "../../styles/abstracts/_fonts" as *;
-@use "../../styles/abstracts/colors" as *;
+@use '../../styles/abstracts/_fonts' as *;
+@use '../../styles/abstracts/colors' as *;
 
 .home {
-  width: 100%;
+	width: 100%;
 	padding: 2em;
 
-  &__logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 6em;
-  }
+	&__logo {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 6em;
+	}
 
 	&__hero {
 		display: flex;
 
-    &--green {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 2em;
+		&--green {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 2em;
 
-      width: 46vw;
-      height: 55vh;
-      background-color: $clr-secondary;
+			width: 46vw;
+			height: 55vh;
+			background-color: $clr-secondary;
 
-      color: $clr-background;
-      font-size: $f-s-2200;
-      font-weight: $f-w-800;
+			color: $clr-background;
+			font-size: $f-s-2200;
+			font-weight: $f-w-800;
 
-      h1 {
-        margin-left: -1rem;
-      }
-    }
+			h1 {
+				margin-left: -1rem;
+			}
+		}
 
-    &--beige {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 2em;
+		&--beige {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 2em;
 
-      width: 46vw;
-      height: 55vh;
+			width: 46vw;
+			height: 55vh;
 
-      color: $clr-grey;
-      font-size: $f-s-2200;
-      font-weight: $f-w-800;
-    }
+			color: $clr-grey;
+			font-size: $f-s-2200;
+			font-weight: $f-w-800;
+		}
 	}
 }

@@ -19,7 +19,6 @@ function CategoryBudget() {
 		const slicedElement = element.date.slice(0, 7);
 
 		if (slicedElement === slicedCurrentDate) {
-			//console.log(element)
 			return element;
 		}
 		return false;
@@ -28,7 +27,6 @@ function CategoryBudget() {
 	// * Filter expense by category
 	const filteredCategory = filteredExpense.filter((element) => {
 		if (element.category) {
-			console.log(element);
 			return element;
 		}
 		return false;
@@ -42,7 +40,9 @@ function CategoryBudget() {
 
 	return (
 		<div className='category--budget'>
-			<div className='category--budget--groceries'>Groceries Spent: {sumExpense}</div>
+			<div className='category--budget--groceries'>
+				Groceries Spent: {sumExpense}
+			</div>
 		</div>
 	);
 }

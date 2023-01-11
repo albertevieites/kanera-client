@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
-import { deleteExpenseService, getExpenseDetailsService } from '../../services/expenses.services';
+import {
+	deleteExpenseService,
+	getExpenseDetailsService,
+} from '../../services/expenses.services';
 
 const ExpensesDetails = () => {
 	const { id } = useParams();
@@ -28,9 +31,9 @@ const ExpensesDetails = () => {
 	const handleDelete = async () => {
 		try {
 			await deleteExpenseService(id);
-			navigate("/expenses");
+			navigate('/expenses');
 		} catch (error) {
-			navigate("/error")
+			navigate('/error');
 		}
 	};
 

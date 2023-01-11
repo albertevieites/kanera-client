@@ -1,36 +1,36 @@
-@use "../../styles/abstracts/colors" as *;
-@use "../../styles/abstracts/fonts" as *;
+@use '../../styles/abstracts/colors' as *;
+@use '../../styles/abstracts/fonts' as *;
 
 .expense--form {
-  margin: 2em;
-  padding: 2em;
+	margin: 2em;
+	padding: 2em;
 
-  color: $clr-grey;
+	color: $clr-grey;
 
-  &__container {
-    display: flex;
-  }
+	&__container {
+		display: flex;
+	}
 
-  input {
-    margin-right: 1em;
-    padding: .5em;
-    border-radius: .5rem;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
+	input {
+		margin-right: 1em;
+		padding: 0.5em;
+		border-radius: 0.5rem;
+		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	}
 
-  select {
-    margin-right: 1em;
-    padding: .5em;
-    border-radius: .5rem;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
+	select {
+		margin-right: 1em;
+		padding: 0.5em;
+		border-radius: 0.5rem;
+		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	}
 
-  button {
-    margin: 2em 0;
-    padding: .5em 3em;
-    background-color: $clr-terciary;
-    border-radius: .5rem;
+	button {
+		margin: 2em 0;
+		padding: 0.5em 3em;
+		background-color: $clr-terciary;
+		border-radius: 0.5rem;
 
-    color: $clr-background;
-  }
+		color: $clr-background;
+	}
 }
